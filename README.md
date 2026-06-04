@@ -38,7 +38,7 @@ Step B: 初始化 Python 虛擬環境
 
 Bash
 cd ai-resume-backend
-python -m venv venv
+py -m venv venv
 
 # Windows (PowerShell) 啟用虛擬環境
 .\venv\Scripts\Activate.ps1
