@@ -49,7 +49,7 @@ Step C: 安裝依賴套件
 在虛擬環境啟用狀態下，安裝所有必要的 Python 套件：
 
 Bash
-pip install fastapi uvicorn sqlalchemy pymysql passlib[bcrypt] bcrypt==3.2.2 pyjwt pydantic[email] python-dotenv pdfplumber google-generativeai
+pip install fastapi uvicorn sqlalchemy pymysql passlib[bcrypt] bcrypt==3.2.2 pyjwt pydantic[email] python-dotenv pdfplumber python-multipart google-generativeai
 Step D: 配置環境變數 (.env)
 在 ai-resume-backend/ 資料夾根目錄下建立一個 .env 檔案，並填入您的機密金鑰（此檔案已被納入 .gitignore，不會上傳至 GitHub）：
 
