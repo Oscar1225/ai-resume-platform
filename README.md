@@ -6,7 +6,7 @@
 
 - **前端 (Frontend):** Vue 3 (Composition API), Pinia (狀態管理), Vue Router (路由導覽守衛), Element Plus (UI 組件庫), Axios (API 請求攔截器)
 - **後端 (Backend):** FastAPI (Python 異步網絡框架), SQLAlchemy (ORM), PyJWT (身分驗證), Passlib/Bcrypt (密碼雜湊加密)
-- **大語言模型 (LLM):** Google Gemini 1.5 Flash API
+- **大語言模型 (LLM):** Google Gemini 3.5 Flash API
 - **資料庫 (Database):** MySQL
 
 ## 📁 專案架構 (Project Structure)
