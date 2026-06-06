@@ -20,8 +20,8 @@ app = FastAPI(title="AI 職涯媒合 API")
 # --- 1. CORS 跨網域設定 ---
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173","https://ai-resume-platform-iota.vercel.app/"],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
