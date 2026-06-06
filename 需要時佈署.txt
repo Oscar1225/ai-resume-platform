@@ -1,0 +1,3 @@
+vercel:https://vercel.com/oscar1225-s-projects/ai-resume-platform
+render:https://dashboard.render.com/web/srv-d8i13b6q1p3s73e77t9g/deploys/dep-d8i1dsq8qa3s73dvm990
+aiven:https://console.aiven.io/account/a5bb9b12f03d/project/ai-resume-db/services
