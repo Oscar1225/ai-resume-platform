@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import router from './router';
 // 建立 Axios 實例，設定後端伺服器的網址
 const api = axios.create({
   baseURL: 'https://ai-resume-api-nb9h.onrender.com/v1', // FastAPI 的預設位址//https://ai-resume-api-nb9h.onrender.com
@@ -18,6 +18,29 @@ api.interceptors.request.use(
     return config;
   },
   (error) => {
+    return Promise.reject(error);
+  }
+);
+// 🌟 新增：Response 攔截器 (專門捕捉後端丟回來的錯誤)
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    // 取得這次發生錯誤的 API 網址
+    const requestUrl = error.config.url;
+
+    // 🌟 關鍵修改：如果是 401，且「網址不包含 /login」時，才執行自動登出
+    if (error.response && error.response.status === 401 && !requestUrl.includes('/login')) {
+      console.warn('Token 已過期或無效，執行自動登出');
+
+      localStorage.removeItem('token'); 
+      localStorage.removeItem('user'); 
+
+      router.push('/login');
+    }
+    
+    // 把錯誤繼續往下丟，這樣登入頁面才能抓到「帳號密碼錯誤」的訊息
     return Promise.reject(error);
   }
 );

@@ -174,7 +174,10 @@ async def analyze_resume(resume_file: UploadFile = File(...), current_user: User
         print("AI 分析完成！")
         
         return result_json
-
+    # 🌟 新增這個區塊：如果是 FastAPI 自己的 HTTPException (包含 401)，就直接丟出去，不要攔截！
+    except HTTPException as http_exc:
+        raise http_exc
+    
     except Exception as e:
         print(f"解析或 AI 呼叫錯誤: {str(e)}")
         raise HTTPException(status_code=500, detail="伺服器處理或 AI 分析失敗，請稍後再試。")
