@@ -17,9 +17,6 @@ export const useAuthStore = defineStore('auth', () => {
     // 存入瀏覽器
     localStorage.setItem('token', authData.access_token);
     localStorage.setItem('role', authData.role);
-    
-    // 將 Token 綁定到 Axios，之後每次打 API 都會自動帶上這張「通行證」
-    api.defaults.headers.common['Authorization'] = `Bearer ${authData.access_token}`;
   };
 
   // 登出時呼叫
@@ -30,7 +27,6 @@ export const useAuthStore = defineStore('auth', () => {
     
     localStorage.removeItem('token');
     localStorage.removeItem('role');
-    delete api.defaults.headers.common['Authorization'];
   };
 
   return { isLogin, role, token, login, logout };
