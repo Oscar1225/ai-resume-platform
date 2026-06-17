@@ -116,7 +116,14 @@ const submitResume = async () => {
     analysisResult.value = responseData;
     
   } catch (error) {
-    alert('上傳分析失敗，請檢查後端伺服器是否開啟。');
+    // 🌟 關鍵判斷：如果錯誤狀態碼是 401，什麼都不做 (攔截器會處理跳轉)
+    if (error.response && error.response.status === 401) {
+       console.log("Token 過期，交給攔截器處理跳轉...");
+       return; // 提早結束，不要執行後面的 alert
+    }
+
+    // 如果不是 401 (例如 500 伺服器掛了，或是網路斷線)，才跳出警告
+    alert('上傳分析失敗，請檢查後端伺服器是否開啟，或稍後再試。');
   } finally {
     isLoading.value = false;
   }
